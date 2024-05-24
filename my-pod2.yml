@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-webtiers
+spec:
+  containers:
+  - name: khodzha
+    image: azizkhodzhaev/khodzha:latest
+    ports:
+    - containerPort: 80
+      hostPort: 8080  # Example host port for khodzha container
+
+  - name: side1
+    image: azizkhodzhaev/side1:latest
+    ports:
+    - containerPort: 80
+      hostPort: 8181  # Example host port for side1 container
+
+  - name: side2
+    image: azizkhodzhaev/side2:latest
+    ports:
+    - containerPort: 80
+      hostPort: 8282  # Example host port for side2 container
+
+  imagePullSecrets:
+  - name: dockerhub-secret
